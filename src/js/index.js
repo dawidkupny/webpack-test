@@ -111,9 +111,9 @@ if (32 > 20) {
   console.log("to nieprawda");
 }
 
-const result = humanOne.age > humanTwo.age ? age : false;
+const ageResult = humanOne.age > humanTwo.age ? age : false;
 
-console.log(result);
+console.log(ageResult);
 
 const button = document.querySelector(".action--js");
 
@@ -137,3 +137,35 @@ const startOfDay = moment().startOf('day').fromNow();
 const timePlaceholder = document.querySelector('.time--js');
 
 timePlaceholder.innerHTML = startOfDay;
+
+document.cookie = 'name = maciek'
+document.cookie = 'test = xd'
+
+localStorage.setItem('klucz', JSON.stringify({auto: 'BMW'}));
+
+console.log({auto: 'BMW'});
+console.log(localStorage.getItem('klucz'));
+
+const fromLocalStorage = localStorage.getItem('klucz');
+const newObject = JSON.parse(fromLocalStorage);
+newObject.model = 'Z5';
+console.log(newObject);
+
+
+const entry = localStorage.getItem('entry');
+let result = '';
+
+if(entry) {
+  console.log(`Wartość z entry: ${entry}`)
+  result = entry;
+}
+
+const entryInput = document.querySelector('.entry--js');
+entryInput.value = result;
+
+
+const entryButton = document.querySelector(".action--js");
+
+entryButton.addEventListener("click", () => {
+  localStorage.setItem('entry', entryInput.value);
+});
